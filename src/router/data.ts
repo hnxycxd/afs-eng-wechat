@@ -18,6 +18,15 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
+    path: '/bindCard',
+    name: 'bindCard',
+    component: () => import('@/page/BindCard/index.vue'),
+    meta: {
+      title: '绑定银行卡',
+      requireAuth: true,
+    },
+  },
+  {
     path: '/:path(.*)+',
     name: 'notFound',
     redirect: {

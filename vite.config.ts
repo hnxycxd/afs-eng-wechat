@@ -3,6 +3,8 @@ import { defineConfig } from 'vite'
 import type { UserConfigExport } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 // import AutoImport from 'unplugin-auto-import/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 
@@ -25,8 +27,9 @@ export default defineConfig(({ command }) => {
       // }),
       Components({
         dts: true,
-        resolvers: [VantResolver()],
+        resolvers: [VantResolver(), IconsResolver()],
       }),
+      Icons({ defaultClass: 'icon' }),
     ],
     // TODO:
     // optimizeDeps: {

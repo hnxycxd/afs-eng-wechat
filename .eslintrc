@@ -1,5 +1,5 @@
 {
-  "extends": "@antfu",
+  "extends": ["@antfu", "plugin:tailwindcss/recommended"],
   "rules": {
     "no-console": "off",
     "no-debugger": "off"

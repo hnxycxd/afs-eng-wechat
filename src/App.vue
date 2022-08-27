@@ -1,16 +1,9 @@
-<template>
-  <ul>
-    <li>
-      <router-link to="/">
-        /
-      </router-link>
-    </li>
-    <li>
-      <router-link to="/login">
-        login
-      </router-link>
-    </li>
-  </ul>
+<script setup lang="ts">
+import themeVars from '@/constant/themeVars'
+</script>
 
-  <router-view />
+<template>
+  <van-config-provider :theme-vars="themeVars" class="h-full">
+    <router-view />
+  </van-config-provider>
 </template>
