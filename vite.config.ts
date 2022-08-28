@@ -27,9 +27,9 @@ export default defineConfig(({ command }) => {
       // }),
       Components({
         dts: true,
-        resolvers: [VantResolver(), IconsResolver()],
+        resolvers: [VantResolver(), IconsResolver({ prefix: false })],
       }),
-      Icons({ defaultClass: 'icon' }),
+      Icons({ defaultClass: 'icon', compiler: 'vue3' }),
     ],
     // TODO:
     // optimizeDeps: {

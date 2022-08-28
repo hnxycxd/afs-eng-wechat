@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const useCountStore = defineStore('user', {
+const useCountStore = defineStore('count', {
   state: () => ({
     count: 0,
   }),
