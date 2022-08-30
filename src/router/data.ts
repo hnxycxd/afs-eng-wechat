@@ -4,7 +4,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'home',
-    component: () => import('@/page/Home/index.vue'),
+    component: () => import('@/page/home/index.vue'),
     meta: {
       title: '首页',
     },
@@ -12,7 +12,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/page/Login/index.vue'),
+    component: () => import('@/page/login/index.vue'),
     meta: {
       title: '登陆',
     },
@@ -29,7 +29,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/bindCard',
     name: 'bindCard',
-    component: () => import('@/page/BindCard/index.vue'),
+    component: () => import('@/page/bindCard/index.vue'),
     meta: {
       title: '绑定银行卡',
       requireAuth: true,

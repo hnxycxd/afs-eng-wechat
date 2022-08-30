@@ -17,6 +17,7 @@ import { bankStyle } from './data'
           :style="{ fontSize: item.fontSize }"
         />
       </div>
+      <icon-bank-jiaotongBank style="fontSize: 22px" />
     </div>
   </div>
 </template>

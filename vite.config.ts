@@ -1,15 +1,16 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
-import type { UserConfigExport } from 'vite'
+import type { UserConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+import { FileSystemIconLoader } from 'unplugin-icons/loaders'
 // import AutoImport from 'unplugin-auto-import/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig(({ command }) => {
-  const config: UserConfigExport = {
+  const config: UserConfig = {
     resolve: {
       alias: {
         '@': resolve('./src'),
@@ -27,9 +28,22 @@ export default defineConfig(({ command }) => {
       // }),
       Components({
         dts: true,
-        resolvers: [VantResolver(), IconsResolver({ prefix: false })],
+        resolvers: [
+          VantResolver(),
+          IconsResolver({ prefix: 'icon', customCollections: ['bank'] }),
+        ],
       }),
-      Icons({ defaultClass: 'icon', compiler: 'vue3' }),
+      Icons({
+        defaultClass: 'icon',
+        compiler: 'vue3',
+        autoInstall: true,
+        customCollections: {
+          bank: FileSystemIconLoader(
+            'src/assets/img/svg',
+            svg => svg.replace(/^<svg /, '<svg fill="currentColor"'),
+          ),
+        },
+      }),
     ],
     // TODO:
     // optimizeDeps: {

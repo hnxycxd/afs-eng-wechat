@@ -8,6 +8,8 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CarbonAddAlt: typeof import('~icons/carbon/add-alt')['default']
+    IcBaseline10k: typeof import('~icons/ic/baseline10k')['default']
+    IconBankJiaotongBank: typeof import('~icons/bank/jiaotong-bank')['default']
     Input: typeof import('./src/components/input/input.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

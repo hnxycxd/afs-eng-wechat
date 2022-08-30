@@ -1,6 +1,6 @@
 @font-face {
   font-family: "iconfont"; /* Project id  */
-  src: url('iconfont.ttf?t=1661845658212') format('truetype');
+  src: url('iconfont.ttf?t=1661864168761') format('truetype');
 }
 
 .iconfont {
@@ -11,11 +11,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-jiaotongyinhang:before {
-  content: "\e612";
+.icon-yinhanglogo-:before {
+  content: "\e97d";
 }
 
-.icon-nongyeyinhang:before {
-  content: "\e626";
+.icon-yinhanglogo-1:before {
+  content: "\e97f";
 }
 

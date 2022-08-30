@@ -8,14 +8,14 @@ interface IBankStyle {
 }
 export const bankStyle: IBankStyle[] = [
   {
-    icon: nongyeyinhang,
-    // icon: 'nongyeyinhang',
+    // icon: nongyeyinhang,
+    icon: 'yinhanglogo-1',
     themeColor: '#319c8b',
     fontSize: '34px',
   },
   {
-    icon: jiaotongyinhang,
-    // icon: 'jiaotongyinhang',
+    // icon: jiaotongyinhang,
+    icon: 'yinhanglogo-',
     themeColor: '#00377a',
     fontSize: '30px',
   },
