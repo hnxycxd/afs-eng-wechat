@@ -7,11 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Carbon4k: typeof import('~icons/carbon/4k')['default']
     CarbonAddAlt: typeof import('~icons/carbon/add-alt')['default']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
-    ICarbonAddAlt: typeof import('~icons/carbon/add-alt')['default']
-    ICarbonUser: typeof import('~icons/carbon/user')['default']
     Input: typeof import('./src/components/input/input.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
@@ -20,9 +16,5 @@ declare module '@vue/runtime-core' {
     VanConfigProvider: typeof import('vant/es')['ConfigProvider']
     VanField: typeof import('vant/es')['Field']
     VanForm: typeof import('vant/es')['Form']
-    VanRate: typeof import('vant/es')['Rate']
-    VanTab: typeof import('vant/es')['Tab']
-    VanTabs: typeof import('vant/es')['Tabs']
-    VantInput: typeof import('./src/components/VantInput.vue')['default']
   }
 }

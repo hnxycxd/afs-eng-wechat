@@ -1,4 +1,4 @@
-import type { FieldRule } from 'vant'
+import type { FieldRule, FieldType } from 'vant'
 import { IDCardReg, mobileReg, verityCodeReg } from '@/utils'
 
 export interface loginParams {
@@ -10,7 +10,7 @@ export interface loginParams {
 
 interface loginParamsList {
   key: keyof loginParams
-  type?: 'tel'
+  type?: FieldType
   title: string
   maxlength?: number
   rules?: FieldRule[]
@@ -42,6 +42,7 @@ export const loginList: loginParamsList[] = [
     key: 'verityCode',
     title: '验证码',
     maxlength: 6,
+    type: 'number',
     rules: [{ pattern: verityCodeReg, message: '验证码不正确' }],
   },
 ]

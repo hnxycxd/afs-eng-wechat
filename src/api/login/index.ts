@@ -12,7 +12,7 @@ interface loginRes {
 
 export const login = (params: loginReq) => {
   return request<loginRes>({
-    url: 'local/wechat/login',
+    url: '/wechat/login',
     params,
     loading: true,
   })

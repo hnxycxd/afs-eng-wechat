@@ -45,6 +45,11 @@ const onSubmit = () => {
     })
   }
 }
+
+const mockLogin = () => {
+  appStore.login({ access_token: 'mockLogin' })
+  router.push({ name: 'bindCard' })
+}
 </script>
 
 <template>
@@ -84,6 +89,15 @@ const onSubmit = () => {
             :loading="loading"
           >
             确定
+          </van-button>
+        </div>
+        <div style="margin: 16px">
+          <van-button
+            round block
+            type="warning"
+            @click="mockLogin"
+          >
+            开发登陆
           </van-button>
         </div>
       </van-form>

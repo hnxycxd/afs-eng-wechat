@@ -18,6 +18,15 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
+    path: '/bankList',
+    name: 'bankList',
+    component: () => import('@/page/bankList/index.vue'),
+    meta: {
+      title: '我的银行卡',
+      requireAuth: true,
+    },
+  },
+  {
     path: '/bindCard',
     name: 'bindCard',
     component: () => import('@/page/BindCard/index.vue'),
