@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
-import { size } from 'lodash'
+// import { size } from 'lodash-es'
 import { getDemo } from '@/api/home/index'
 import useCountStore from '@/store/count'
 import Input from '@/components/input/input.vue'
@@ -10,7 +10,7 @@ const countStore = useCountStore()
 const router = useRouter()
 const val = ref('')
 
-console.log('obj size', size({ name: 'zs', age: 11, addr: 'sh' }))
+// console.log('obj size', size({ name: 'zs', age: 11, addr: 'sh' }))
 
 onMounted(() => {
   // getDemo({ addr: 'sh' }).then((res) => {
@@ -29,9 +29,9 @@ onMounted(() => {
 
   <ul class="mt-6 text-blue-600">
     <li>
-      <router-link to="/bankList">
+      <RouterLink to="/bankList">
         我的银行卡
-      </router-link>
+      </RouterLink>
     </li>
   </ul>
   <div>

@@ -48,7 +48,7 @@ const onSubmit = () => {
 
 const mockLogin = () => {
   appStore.login({ access_token: 'mockLogin' })
-  router.push({ name: 'bindCard' })
+  router.push({ name: 'bankList' })
 }
 </script>
 
