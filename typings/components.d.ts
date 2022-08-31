@@ -7,16 +7,16 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    CarbonAddAlt: typeof import('~icons/carbon/add-alt')['default']
-    IcBaseline10k: typeof import('~icons/ic/baseline10k')['default']
-    IconBankJiaotongBank: typeof import('~icons/bank/jiaotong-bank')['default']
-    Input: typeof import('./src/components/input/input.vue')['default']
+    Input: typeof import('./../src/components/input/input.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     VanButton: typeof import('vant/es')['Button']
     VanCellGroup: typeof import('vant/es')['CellGroup']
     VanConfigProvider: typeof import('vant/es')['ConfigProvider']
+    VanEmpty: typeof import('vant/es')['Empty']
     VanField: typeof import('vant/es')['Field']
     VanForm: typeof import('vant/es')['Form']
+    VanPicker: typeof import('vant/es')['Picker']
+    VanPopup: typeof import('vant/es')['Popup']
   }
 }

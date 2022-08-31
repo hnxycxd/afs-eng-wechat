@@ -75,7 +75,7 @@ const mockLogin = () => {
           >
             <template v-if="key === 'verityCode'" #button>
               <van-button size="small" type="primary" round @click="getSmsCode">
-                发送验证码
+                获取验证码
               </van-button>
             </template>
           </van-field>

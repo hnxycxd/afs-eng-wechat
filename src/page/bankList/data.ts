@@ -1,22 +1,23 @@
-import nongyeyinhang from '@/assets/img/svg/nongyeyinhang.svg'
-import jiaotongyinhang from '@/assets/img/svg/jiaotongyinhang.svg'
+import nongyeBank from '~icons/svg/nongye-bank'
+import jiaotongBank from '~icons/svg/jiaotong-bank'
 
 interface IBankStyle {
   icon: string
   themeColor: string
   fontSize?: string
+  name?: string
 }
-export const bankStyle: IBankStyle[] = [
+export const bankBaseInfo: IBankStyle[] = [
   {
-    // icon: nongyeyinhang,
-    icon: 'yinhanglogo-1',
+    icon: nongyeBank,
     themeColor: '#319c8b',
     fontSize: '34px',
+    name: '中国农业银行',
   },
   {
-    // icon: jiaotongyinhang,
-    icon: 'yinhanglogo-',
+    icon: jiaotongBank,
     themeColor: '#00377a',
     fontSize: '30px',
+    name: '中国交通银行',
   },
 ]

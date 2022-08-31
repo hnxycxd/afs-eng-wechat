@@ -27,10 +27,10 @@ export default defineConfig(({ command }) => {
       //   dts: true,
       // }),
       Components({
-        dts: true,
+        dts: resolve('./typings', 'components.d.ts'),
         resolvers: [
           VantResolver(),
-          IconsResolver({ prefix: 'icon', customCollections: ['bank'] }),
+          IconsResolver({ prefix: false, customCollections: ['svg'] }),
         ],
       }),
       Icons({
@@ -38,11 +38,21 @@ export default defineConfig(({ command }) => {
         compiler: 'vue3',
         autoInstall: true,
         customCollections: {
-          bank: FileSystemIconLoader(
+          svg: FileSystemIconLoader(
             'src/assets/img/svg',
-            svg => svg.replace(/^<svg /, '<svg fill="currentColor"'),
+            svg => svg.replace(/^<svg /, '<svg fill="currentColor"').replace(/^<path /, '<path fill="currentColor"'),
           ),
         },
+        // iconCustomizer(collection, icon, props) {
+        //   const name = `${collection}:${icon}`
+        //   console.log('name', name)
+        //   if (collection === 'svg') {
+        //     props.width = '20px'
+        //     props.height = '20px'
+        //     props.color = 'skyblue'
+        //   }
+        // },
+
       }),
     ],
     // TODO:

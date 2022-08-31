@@ -1,5 +1,5 @@
 // 数字
-export const number = /^[0-9]*$/
+export const numberReg = /^[0-9]*$/
 // 验证码(6位数字)
 export const verityCodeReg = /^\d{6}$/
 // 手机

@@ -27,9 +27,9 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
-    path: '/bindCard',
-    name: 'bindCard',
-    component: () => import('@/page/bindCard/index.vue'),
+    path: '/bankAdd',
+    name: 'bankAdd',
+    component: () => import('@/page/bankAdd/index.vue'),
     meta: {
       title: '绑定银行卡',
       requireAuth: true,
