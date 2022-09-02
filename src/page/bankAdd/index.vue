@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { onUnmounted, reactive, ref } from 'vue'
+import type { FormInstance } from 'vant'
 import type { bankAddInfo } from './data'
 import { bankAddList, bankList } from './data'
 import { useAppStore } from '@/store/app'
+// import { wxSDK } from '@/utils'
+import { useCountDown } from '@/hooks'
 
+const { counter, setCounter } = useCountDown()
 const appStore = useAppStore()
+const bankAddRef = ref<FormInstance>()
 const bankAddState = reactive<bankAddInfo>({
   username: '',
   idCard: '',
@@ -20,30 +25,44 @@ const onFormItemClick = (key :(keyof bankAddInfo)) => {
     showPicker.value = true
 }
 
+// 所属银行
 const onConfirmBank = (value: any) => {
   const bankName = value.selectedOptions?.[0]?.text
   bankAddState.bankName = bankName
   showPicker.value = false
 }
 
-const getSmsCode = () => {}
+// 获取验证码
+const getSmsCode = () => {
+  bankAddRef.value?.validate('tel').then(() => {
+    Promise.resolve().then(() => {
+      setCounter(60)
+    })
+  }).catch((err) => {
+    console.log('error', err)
+  })
+}
 
+// 提交
 const onSubmit = () => {
   console.log('submit', bankAddState)
+  setCounter(0)
 }
+
+onUnmounted(() => setCounter(0))
 </script>
 
 <template>
   <div class="pt-16">
     <div>
-      <van-form @submit="onSubmit">
+      <van-form ref="bankAddRef" @submit="onSubmit">
         <van-cell-group inset>
           <van-field
             v-for="({ key, title, type, rules, maxlength, isLink }) in bankAddList"
             :key="key"
             v-model="bankAddState[key]"
             label-width="100"
-            name="item.key"
+            :name="key"
             :label="title"
             :type="type"
             :rules="rules"
@@ -53,8 +72,15 @@ const onSubmit = () => {
             @click="onFormItemClick(key)"
           >
             <template v-if="key === 'verityCode'" #button>
-              <van-button size="small" type="primary" round @click="getSmsCode">
-                获取验证码
+              <van-button
+                round
+                size="small"
+                class="w-[100px]"
+                type="primary"
+                :disabled="!!counter"
+                @click="getSmsCode"
+              >
+                {{ counter ? `${counter}s` : '获取验证码' }}
               </van-button>
             </template>
           </van-field>
@@ -67,18 +93,12 @@ const onSubmit = () => {
             />
           </van-popup>
         </van-cell-group>
-        <div style="margin: 16px;">
+        <div class="m-4">
           <van-button round block type="primary" native-type="submit">
-            提交
+            确认授权
           </van-button>
         </div>
       </van-form>
     </div>
-    <!-- <van-button @click="appStore.logout">
-      clear
-    </van-button> -->
-    <!-- <van-button @click="logStore">
-      log store
-    </van-button> -->
   </div>
 </template>

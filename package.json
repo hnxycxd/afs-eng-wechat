@@ -20,7 +20,8 @@
     "uuid": "^8.3.2",
     "vant": "^4.0.0-beta.1",
     "vue": "^3.2.37",
-    "vue-router": "^4.1.2"
+    "vue-router": "^4.1.2",
+    "weixin-js-sdk-ts": "^1.6.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.25.2",

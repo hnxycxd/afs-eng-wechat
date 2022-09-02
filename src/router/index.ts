@@ -8,7 +8,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  let title = to.meta?.title
+  const title = to.meta?.title
   const appStore = useAppStore()
 
   if (to.meta.requireAuth) {
@@ -20,7 +20,6 @@ router.beforeEach((to, from, next) => {
         path: '/login',
         query: { redirect: to.fullPath },
       })
-      title = '登陆'
     }
   }
   else {

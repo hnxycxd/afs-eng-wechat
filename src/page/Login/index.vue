@@ -1,17 +1,20 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { onUnmounted, reactive, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import type { FormInstance } from 'vant'
 import type { loginParams } from './data'
 import { loginList } from './data'
 import { login } from '@/api/login'
 import logo from '@/assets/img/logo-low.png'
 import { useAppStore } from '@/store/app'
+import { useCountDown } from '@/hooks'
 
 const router = useRouter()
+const route = useRoute()
 const appStore = useAppStore()
+const { counter, setCounter } = useCountDown()
 const loading = ref(false)
-const loginEl = ref<FormInstance>()
+const loginRef = ref<FormInstance>()
 const loginInfo = reactive<loginParams>({
   username: '',
   idCard: '',
@@ -19,37 +22,41 @@ const loginInfo = reactive<loginParams>({
   verityCode: '',
 })
 
+// 发送验证码
 const getSmsCode = async () => {
-  // console.log('loginEl', loginEl.value)
-  // const validateTel = await loginEl.value?.validate(['tel'])
-
-  loginEl.value?.validate('tel').then((res) => {
+  loginRef.value?.validate('tel').then((res) => {
     console.log('res', res)
-  }).catch((...err) => {
-    console.log('err', err)
+    setCounter(60)
+  }).catch((err) => {
+    console.log('error', err)
   })
-
-  // console.log('🚀 ~ file: index.vue ~ line 19 ~ getSmsCode ~ validateTel', validateTel)
-  console.log('go on')
 }
 
+// 提交
 const onSubmit = () => {
-  if (loginInfo.verityCode === '111111') {
-    loading.value = true
+  loading.value = true
+  login(loginInfo).then((res) => {
+    appStore.login(res.data)
 
-    login(loginInfo).then((res) => {
-      appStore.login(res.data)
-      router.push({ name: 'bindCard' })
-    }).finally(() => {
-      loading.value = false
-    })
-  }
+    const redirect = route.query.redirect as string
+    if (redirect)
+      router.push(redirect)
+  }).finally(() => {
+    loading.value = false
+  })
 }
 
 const mockLogin = () => {
   appStore.login({ access_token: 'mockLogin' })
+  const redirect = route.query.redirect as string
+  if (redirect) {
+    router.push(redirect)
+    return
+  }
   router.push({ name: 'bankList' })
 }
+
+onUnmounted(() => setCounter(0))
 </script>
 
 <template>
@@ -59,7 +66,7 @@ const mockLogin = () => {
     </div>
 
     <main>
-      <van-form ref="loginEl" @submit="onSubmit">
+      <van-form ref="loginRef" @submit="onSubmit">
         <van-cell-group inset>
           <van-field
             v-for="({ key, title, type, maxlength, rules }) in loginList"
@@ -74,8 +81,15 @@ const mockLogin = () => {
             :placeholder="`请输入${title}`"
           >
             <template v-if="key === 'verityCode'" #button>
-              <van-button size="small" type="primary" round @click="getSmsCode">
-                获取验证码
+              <van-button
+                round
+                size="small"
+                type="primary"
+                class="w-[100px]"
+                :disabled="!!counter"
+                @click="getSmsCode"
+              >
+                {{ counter ? `${counter}s` : '获取验证码' }}
               </van-button>
             </template>
           </van-field>
@@ -97,7 +111,7 @@ const mockLogin = () => {
             type="warning"
             @click="mockLogin"
           >
-            开发登陆
+            LOGIN
           </van-button>
         </div>
       </van-form>
