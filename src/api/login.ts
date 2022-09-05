@@ -6,8 +6,11 @@ interface loginReq {
   tel: string
   verityCode: string
 }
-interface loginRes {
+export interface loginRes {
+  accountName?: string
+  tenantId?: string
   access_token: string
+  certNo: string
 }
 
 export const login = (params: loginReq) => {

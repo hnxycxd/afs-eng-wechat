@@ -7,7 +7,9 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Input: typeof import('./../src/components/input/input.vue')['default']
+    Carbon3dCursorAlt: typeof import('~icons/carbon/3d-cursor-alt')['default']
+    CustomInput: typeof import('./../src/components/custom-input.vue')['default']
+    Input: typeof import('./../src/components/input.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     VanButton: typeof import('vant/es')['Button']
@@ -16,6 +18,7 @@ declare module '@vue/runtime-core' {
     VanEmpty: typeof import('vant/es')['Empty']
     VanField: typeof import('vant/es')['Field']
     VanForm: typeof import('vant/es')['Form']
+    VanInput: typeof import('vant/es')['Input']
     VanPicker: typeof import('vant/es')['Picker']
     VanPopup: typeof import('vant/es')['Popup']
   }

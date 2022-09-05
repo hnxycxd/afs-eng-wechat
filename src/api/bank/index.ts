@@ -1,3 +1,4 @@
+import type { signListRes, signListType } from './types'
 import request from '@/api/request'
 
 // 绑卡 保存
@@ -18,13 +19,15 @@ export function getOrderBankCard(applyNo: string) {
 }
 
 // 绑卡列表
-export function signList(params: Record<string, any>) {
-  return request({
-    url: '/apply/cust/bankcard/signList',
+export function signList(params: signListType) {
+  return request<signListRes>({
+    url: 'localAfs/apply/cust/bankcard/signList',
     data: params,
+    loading: true,
     method: 'post',
   })
 }
+
 // 校验银行卡是否已解绑
 export function checkUnBind(id: string) {
   return request({

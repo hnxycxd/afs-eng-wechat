@@ -15,7 +15,14 @@ onMounted(() => {
   // }).catch((err) => {
   //   console.log('getDemo/err', err)
   // })
+  window.addEventListener('popstate', () => {
+    console.log('---------------popState重复啊')
+  })
 })
+const onPushState = () => {
+  console.log('pushstate')
+  history.pushState({}, '', '/list')
+}
 </script>
 
 <template>
@@ -31,4 +38,12 @@ onMounted(() => {
       </RouterLink>
     </li>
   </ul>
+  <van-button type="primary" @click="onPushState">
+    pushState
+  </van-button>
+  <custom-input placeholder="aaa">
+    <template #icon>
+      <carbon-3d-cursor-alt />
+    </template>
+  </custom-input>
 </template>

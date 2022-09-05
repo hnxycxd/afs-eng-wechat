@@ -1,6 +1,6 @@
-interface ISetStorage {
+interface ISetStorage<T> {
   key: string
-  value: any
+  value: T
   type?: 'sessionStorage' | 'localStorage'
 }
 interface IGetStorage {
@@ -11,7 +11,7 @@ interface IGetStorage {
 /**
  * 存储Storage
  */
-export const setStorage = (params: ISetStorage) => {
+export const setStorage = <T>(params: ISetStorage<T>) => {
   const type = params?.type || 'sessionStorage'
   const obj = {
     dataType: typeof (params.value),
@@ -27,7 +27,7 @@ export const setStorage = (params: ISetStorage) => {
  */
 export const getStorage = (params: IGetStorage) => {
   const type = params?.type || 'sessionStorage'
-  let value = window[type].getItem(params.key)
+  let value: null | string | Record<string, any> = window[type].getItem(params.key)
   if (value === null)
     value = window.localStorage.getItem(params.key)
   if (value !== null)

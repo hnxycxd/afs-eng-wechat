@@ -23,7 +23,7 @@ instance.interceptors.request.use(
 
     params._afst = (new Date()).getTime()
     headers['access-token'] = appStore.access_token
-    headers['tenant-id'] = appStore.tenantId
+    // headers['tenant-id'] = appStore.tenantId
     headers['a-request-id'] = uuid().replace(/-/g, '')
     return config
   },

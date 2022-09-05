@@ -2,16 +2,14 @@
 import { useAttrs } from 'vue'
 import type { FieldProps } from 'vant'
 
-interface myInputType extends Partial<FieldProps> {
+interface customInput extends Partial<FieldProps> {
   otherProps?: boolean
   iconName?: string
 }
 
-defineProps<myInputType>()
+defineProps<customInput>()
 
 const attrs = useAttrs()
-
-console.log('attrs', attrs)
 </script>
 
 <template>

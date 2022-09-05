@@ -1,4 +1,4 @@
-import { resolve } from 'path'
+import path from 'node:path'
 import { defineConfig } from 'vite'
 import type { UserConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -9,12 +9,14 @@ import { FileSystemIconLoader } from 'unplugin-icons/loaders'
 // import AutoImport from 'unplugin-auto-import/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 
+const pathSrc = path.resolve(__dirname, 'src')
+
 export default defineConfig(({ command }) => {
   const config: UserConfig = {
     resolve: {
       alias: {
-        '@': resolve('./src'),
-        'utils': resolve('./src/utils'),
+        '@': pathSrc,
+        // 'utils': path.resolve(pathSrc, 'utils'),
       },
     },
     plugins: [
@@ -27,7 +29,7 @@ export default defineConfig(({ command }) => {
       //   dts: true,
       // }),
       Components({
-        dts: resolve('./typings', 'components.d.ts'),
+        dts: path.resolve(pathSrc, '../typings/components.d.ts'),
         resolvers: [
           VantResolver(),
           IconsResolver({ prefix: false, customCollections: ['svg'] }),
