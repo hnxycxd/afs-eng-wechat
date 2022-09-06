@@ -5,6 +5,7 @@ import type { loginRes } from '@/api/login'
 export const useAppStore = defineStore({
   id: 'app',
   state: (): loginRes => ({
+    accountName: '',
     tenantId: 'system',
     access_token: '',
     certNo: '',

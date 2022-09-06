@@ -7,7 +7,7 @@ interface loginReq {
   verityCode: string
 }
 export interface loginRes {
-  accountName?: string
+  accountName: string
   tenantId?: string
   access_token: string
   certNo: string

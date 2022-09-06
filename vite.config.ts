@@ -64,10 +64,9 @@ export default defineConfig(({ command }) => {
     server: {
       port: 4000,
       proxy: {
-        '/localAfs': {
+        '/apply': {
           target: 'http://10.18.113.181:31386/api/apply',
           changeOrigin: true,
-          rewrite: (path: string) => path.replace(/^\/localAfs/, ''),
         },
         '/local': {
           target: 'http://localhost:8090',

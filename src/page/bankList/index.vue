@@ -25,10 +25,10 @@ console.log('bankList', bankList)
 </script>
 
 <template>
-  <div>
-    <div class="mx-4 h-5/6 pt-16">
+  <div class="h-full">
+    <div class="mx-4 max-h-[80%] overflow-scroll pt-16">
       <div
-        v-for="({ id, bankCode }) in bankList"
+        v-for="({ id, bankCode, accountNo }) in bankList"
         :key="id"
         :style="{ backgroundColor: bankCodeMap[bankCode].themeColor }"
         class="mb-2 h-28 rounded-lg px-6 py-4 shadow-xl"
@@ -36,7 +36,7 @@ console.log('bankList', bankList)
         <component :is="bankCodeMap[bankCode].icon" class="inline-block h-8 w-8 text-white" />
         <span class="ml-2 text-white">{{ bankCodeMap[bankCode].name }}</span>
         <div class="mt-2 text-lg text-white">
-          **** **** **** 1234
+          **** **** **** {{ accountNo.slice(-4) }}
         </div>
       </div>
 

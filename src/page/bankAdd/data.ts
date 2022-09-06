@@ -1,46 +1,49 @@
-import type { FieldRule, FieldType } from 'vant'
+import type { FieldProps } from 'vant'
 import { IDCardReg, mobileReg, numberReg, verityCodeReg } from '@/utils'
 
 export interface bankAddInfo {
-  username: string
-  idCard: string
-  tel: string
-  verityCode: string
+  accountName: string
+  certNo: string
+  bankPhone: string
+  smsCode: string
+  bankBranch: string
+  accountNo: string
+
+  bankCode: string
   bankName: string
-  bankCardNo: string
 }
 
-interface bankAddParams {
+interface bankAddParams extends Partial<FieldProps> {
   key: keyof bankAddInfo
-  type?: FieldType
-  title: string
-  maxlength?: number
-  isLink?: boolean
-  rules?: FieldRule[]
+  noPlaceholder?: boolean
 }
 
 export const bankAddList: bankAddParams[] = [
   {
-    key: 'username',
+    key: 'accountName',
     title: '姓名',
     maxlength: 10,
+    readonly: true,
   },
   {
-    key: 'idCard',
+    key: 'certNo',
     title: '证件号码',
     maxlength: 18,
+    readonly: true,
     rules: [{ pattern: IDCardReg, message: '证件号码输入有误', trigger: 'onBlur' }],
   },
   {
-    key: 'bankName',
+    key: 'bankBranch',
     title: '所属银行',
-    isLink: true,
-    rules: [
-      { required: true, message: '请选择银行', trigger: 'onChange' },
-    ],
+    disabled: true,
+    noPlaceholder: true,
+    // isLink: true,
+    // rules: [
+    //   { required: true, message: '请选择银行', trigger: 'onChange' },
+    // ],
   },
   {
-    key: 'bankCardNo',
+    key: 'accountNo',
     title: '银行卡号',
     maxlength: 19,
     rules: [
@@ -49,7 +52,7 @@ export const bankAddList: bankAddParams[] = [
     ],
   },
   {
-    key: 'tel',
+    key: 'bankPhone',
     title: '银行预留手机号',
     type: 'tel',
     maxlength: 11,
@@ -59,7 +62,7 @@ export const bankAddList: bankAddParams[] = [
     ],
   },
   {
-    key: 'verityCode',
+    key: 'smsCode',
     title: '验证码',
     maxlength: 6,
     type: 'number',

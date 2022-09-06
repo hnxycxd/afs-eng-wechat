@@ -1,4 +1,4 @@
-import type { signListRes, signListType } from './types'
+import type { bindVerifyReq, sendSmsCodeReq, sendSmsCodeRes, signListRes, signListType } from './types'
 import request from '@/api/request'
 
 // 绑卡 保存
@@ -21,7 +21,7 @@ export function getOrderBankCard(applyNo: string) {
 // 绑卡列表
 export function signList(params: signListType) {
   return request<signListRes>({
-    url: 'localAfs/apply/cust/bankcard/signList',
+    url: 'apply/cust/bankcard/signList',
     data: params,
     loading: true,
     method: 'post',
@@ -35,9 +35,29 @@ export function checkUnBind(id: string) {
     method: 'get',
   })
 }
+
+// (最新) 根据银行卡号获取银行名称
+interface getAccountNoReq {
+  accountNo: string
+}
+interface getAccountNoRes {
+  bankTypeCode: string
+  bankTypeName: string
+  bankTypeNo: string
+  delFlag: string
+  id: string
+}
+export const getSignBankByAccountNo = (params: getAccountNoReq) => {
+  return request<getAccountNoRes>({
+    url: 'apply/engineeringBank/getSignBankByAccountNo',
+    params,
+    method: 'get',
+  })
+}
+
 // 发送短信验证码
-export function sendSmsCode(params: Record<string, any>) {
-  return request({
+export function sendSmsCode(params: sendSmsCodeReq) {
+  return request<sendSmsCodeRes>({
     url: 'apply/cust/bankcard/sendSmsCode',
     data: params,
     method: 'post',
@@ -45,7 +65,7 @@ export function sendSmsCode(params: Record<string, any>) {
 }
 
 // 验证
-export function bindVerify(params: Record<string, any>) {
+export function bindVerify(params: bindVerifyReq) {
   return request({
     url: 'apply/cust/bankcard/bindVerify',
     data: params,
