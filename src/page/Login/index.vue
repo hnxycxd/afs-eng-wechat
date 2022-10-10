@@ -47,7 +47,7 @@ const onSubmit = () => {
 }
 
 const mockLogin = () => {
-  appStore.login({ access_token: 'mockLogin', certNo: 'mockLogin' })
+  appStore.login({ access_token: 'mockLogin', certNo: 'mockLogin', accountName: 'zs' })
   const redirect = route.query.redirect as string
   if (redirect) {
     router.push(redirect)

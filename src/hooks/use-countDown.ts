@@ -5,7 +5,7 @@ import { ref } from 'vue'
  * 开始计时 setCounter(60)
  * 清除计时 setCounter(0)
  */
-export const useCountDown = () => {
+const useCountDown = () => {
   let timeHandle: number
 
   const counter = ref(0)
@@ -32,3 +32,5 @@ export const useCountDown = () => {
     setCounter,
   }
 }
+
+export default useCountDown
