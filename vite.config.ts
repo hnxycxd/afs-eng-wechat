@@ -41,7 +41,7 @@ export default defineConfig(({ command }) => {
         autoInstall: true,
         customCollections: {
           svg: FileSystemIconLoader(
-            'src/assets/img/svg',
+            'src/assets/svg',
             svg => svg.replace(/^<svg /, '<svg fill="currentColor"').replace(/^<path /, '<path fill="currentColor"'),
           ),
         },

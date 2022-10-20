@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onUnmounted, reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { showToast } from 'vant'
 import type { FormInstance } from 'vant'
 import type { loginParams } from './data'
 import { loginList } from './data'
@@ -25,7 +26,7 @@ const loginInfo = reactive<loginParams>({
 // 发送验证码
 const getSmsCode = async () => {
   loginRef.value?.validate('tel').then((res) => {
-    console.log('res', res)
+    showToast({ message: '服务号未提供短信、登陆接口' })
     setCounter(60)
   }).catch((err) => {
     console.log('error', err)
@@ -44,16 +45,6 @@ const onSubmit = () => {
   }).finally(() => {
     loading.value = false
   })
-}
-
-const mockLogin = () => {
-  appStore.login({ access_token: 'mockLogin', certNo: 'mockLogin', accountName: 'zs' })
-  const redirect = route.query.redirect as string
-  if (redirect) {
-    router.push(redirect)
-    return
-  }
-  router.push({ name: 'bankList' })
 }
 
 onUnmounted(() => setCounter(0))
@@ -103,15 +94,6 @@ onUnmounted(() => setCounter(0))
             :loading="loading"
           >
             确定
-          </van-button>
-        </div>
-        <div style="margin: 16px">
-          <van-button
-            round block
-            type="warning"
-            @click="mockLogin"
-          >
-            LOGIN
           </van-button>
         </div>
       </van-form>

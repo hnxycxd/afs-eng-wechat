@@ -23,13 +23,13 @@ export const bankAddList: bankAddParams[] = [
     key: 'accountName',
     title: '姓名',
     maxlength: 10,
-    readonly: true,
+    disabled: true,
   },
   {
     key: 'certNo',
     title: '证件号码',
     maxlength: 18,
-    readonly: true,
+    disabled: true,
     rules: [{ pattern: IDCardReg, message: '证件号码输入有误', trigger: 'onBlur' }],
   },
   {
@@ -37,10 +37,6 @@ export const bankAddList: bankAddParams[] = [
     title: '所属银行',
     disabled: true,
     noPlaceholder: true,
-    // isLink: true,
-    // rules: [
-    //   { required: true, message: '请选择银行', trigger: 'onChange' },
-    // ],
   },
   {
     key: 'accountNo',
