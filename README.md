@@ -16,16 +16,20 @@ pnpm run dev
 
 ## icon
 
-按需导入，按需自动安装。示例如下
+按需导入，按需自动安装。可选图标[icones.js](https://icones.js.org/collection/carbon)。示例如下
 
 ```vue
 <template>
-	 <carbon:arrow-right />
+  <carbon:arrow-right />
 
-	<<ant-design:caret-right-outlined />
+  <ant-design:caret-right-outlined />
 </template>
 ```
 
-[icones.js](https://icones.js.org/collection/carbon)
 [unplugin-icons](https://www.npmjs.com/package/unplugin-icons)
 
+## 设计稿
+[一期设计稿](https://gq87bt.axshare.com/#id=06xj1s&p=%E9%A6%96%E9%A1%B5)
+
+## 其他
+[微信开发者官方文档](https://developers.weixin.qq.com/doc/offiaccount/Custom_Menus/Creating_Custom-Defined_Menu.html)
