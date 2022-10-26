@@ -4,7 +4,6 @@ specifiers:
   '@antfu/eslint-config': ^0.25.2
   '@iconify-json/ant-design': ^1.1.3
   '@iconify-json/carbon': ^1.1.7
-  '@iconify-json/ic': ^1.1.9
   '@types/lodash-es': ^4.17.6
   '@types/node': ^18.0.5
   '@types/uuid': ^8.3.4
@@ -13,6 +12,7 @@ specifiers:
   axios: ^0.27.2
   eslint: ^8.23.0
   eslint-plugin-tailwindcss: ^3.6.0
+  husky: ^8.0.1
   lodash-es: ^4.17.21
   pinia: ^2.0.16
   pinia-plugin-persistedstate: ^2.1.1
@@ -44,7 +44,6 @@ devDependencies:
   '@antfu/eslint-config': 0.25.2_yqf6kl63nyoq5megxukfnom5rm
   '@iconify-json/ant-design': 1.1.3
   '@iconify-json/carbon': 1.1.7
-  '@iconify-json/ic': 1.1.9
   '@types/lodash-es': 4.17.6
   '@types/node': 18.7.14
   '@types/uuid': 8.3.4
@@ -52,6 +51,7 @@ devDependencies:
   autoprefixer: 10.4.8_postcss@8.4.16
   eslint: 8.23.0
   eslint-plugin-tailwindcss: 3.6.0
+  husky: 8.0.1
   postcss: 8.4.16
   tailwindcss: 3.1.8
   typescript: 4.8.2
@@ -271,12 +271,6 @@ packages:
 
   /@iconify-json/carbon/1.1.7:
     resolution: {integrity: sha512-QULSpNWKaX4auIbjITDynfALdJYvOOy/xZb+aLOqCgvpBcmbz5tbqvow4r25FWtVsi4FHVpNQ8vyJZXsD1Hlxg==}
-    dependencies:
-      '@iconify/types': 1.1.0
-    dev: true
-
-  /@iconify-json/ic/1.1.9:
-    resolution: {integrity: sha512-yRHx4AnNNf5kpWVnNMaeXGYnLmaR2tkGsjSc//FaI7LhljUaDkiawUvmnYbjh6M61O78EeEoNk8HgYJVqb+y8A==}
     dependencies:
       '@iconify/types': 1.1.0
     dev: true
@@ -2026,6 +2020,12 @@ packages:
   /human-signals/2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
+    dev: true
+
+  /husky/8.0.1:
+    resolution: {integrity: sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   /ignore/5.2.0:
