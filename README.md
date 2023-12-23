@@ -1,6 +1,5 @@
 # afs-eng-wechat
 
-工程机械微信服务号前端项目
 
 ## 技术栈
 
@@ -28,8 +27,6 @@ pnpm run dev
 
 [unplugin-icons](https://www.npmjs.com/package/unplugin-icons)
 
-## 设计稿
-[一期设计稿](https://gq87bt.axshare.com/#id=06xj1s&p=%E9%A6%96%E9%A1%B5)
-
 ## 其他
 [微信开发者官方文档](https://developers.weixin.qq.com/doc/offiaccount/Custom_Menus/Creating_Custom-Defined_Menu.html)
+https://gq87bt.axshare.com/#id=06xj1s&p=%E9%A6%96%E9%A1%B5
